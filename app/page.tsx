@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button'
 export default function Home() {
   return (
     <>
-      <Button variant="destructive" size={'sm'}>
-        Click Me
-      </Button>
+      <p>Landing Page(Unprotected)</p>
+      <Button>Login</Button>
+      <Button>Register</Button>
     </>
   )
 }

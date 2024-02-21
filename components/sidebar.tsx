@@ -15,6 +15,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FreeCounter } from '@/components/free-counter'
+import { checkSubscription } from '@/lib/subscription'
 
 const montserrat = Montserrat({
   weight: '600',
@@ -67,9 +68,10 @@ const routes = [
 
 interface SidebarProps {
   apiLimitCount: number
+  isPro: boolean
 }
 
-const Sidebar = ({ apiLimitCount }: SidebarProps) => {
+const Sidebar = ({ apiLimitCount = 0, isPro = false }: SidebarProps) => {
   const pathname = usePathname()
 
   return (
@@ -99,7 +101,7 @@ const Sidebar = ({ apiLimitCount }: SidebarProps) => {
           ))}
         </div>
       </div>
-      <FreeCounter apiLimitCount={apiLimitCount} />
+      <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} />
     </div>
   )
 }

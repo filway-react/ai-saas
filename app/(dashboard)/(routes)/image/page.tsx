@@ -26,8 +26,10 @@ import {
 import { Card, CardFooter } from '@/components/ui/card'
 import Image from 'next/image'
 import { Image as GeneratedImage } from 'openai/resources/images'
+import { useProModal } from '@/hooks/use-pro-modal'
 
 const ImagePage: NextPage = () => {
+  const proModal = useProModal()
   const router = useRouter()
   const [images, setImages] = useState<string[]>([])
 
@@ -52,7 +54,9 @@ const ImagePage: NextPage = () => {
       setImages(urls)
       form.reset()
     } catch (error: any) {
-      // TODO: Open Pro Modal
+      if (error?.response?.status === 403) {
+        proModal.onOpen()
+      }
       console.log(error)
     } finally {
       router.refresh()

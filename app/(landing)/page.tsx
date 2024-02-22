@@ -1,11 +1,13 @@
-import { Button } from '@/components/ui/button'
+import { LandingContent } from '@/components/landing-conent'
+import { LandingHero } from '@/components/landing-hero'
+import { LandingNavbar } from '@/components/landing-navbar'
 
 export default function Home() {
   return (
-    <>
-      <p>Landing Page(Unprotected)</p>
-      <Button>Login</Button>
-      <Button>Register</Button>
-    </>
+    <div className="h-full">
+      <LandingNavbar />
+      <LandingHero />
+      <LandingContent />
+    </div>
   )
 }
